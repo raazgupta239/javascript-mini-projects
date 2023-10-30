@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            height: 40%;
+            width: 40%;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            display: block;
+            width: 20%;
+            margin-left: 40%;
+            padding: 10px;
+            background-color: #007BFF;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1 style="color: red;">BMI Calculator</h1>
+        <form>
+            <label for="input1" style="color: red;">Weight:</label>
+            <input type="text" id="input1" name="input1" placeholder="Enter Weight in kilograms">
+            
+            <label for="input2" style="color: red;">Height:</label>
+            <input type="text" id="input2" name="input2" placeholder="Enter Height in inches ">
+            
+            
+            
+            <button type="button" onclick="calculate()">Submit</button> <br>
+            <p style="display: inline; color: red;">BMI Index:</p> <span id="bmi"></span> <br><br>
+            <p style="display: inline; color: red;">Your Category:</p> <span id="category"></span> <br><br>
+        </form>
+    </div>
+
+    <script>
+        function calculate(){
+            var a= parseInt(document.getElementById('input1').value);
+            var b= parseInt(document.getElementById('input2').value);
+            var c= (a/(b*b*0.0254*0.0254));
+            document.getElementById('bmi').textContent=c.toFixed(2);
+
+            if (c < 18.5) {
+                document.getElementById("category").textContent = "Underweight";
+            } else if (c >= 18.5 && c < 24.9) {
+                document.getElementById("category").textContent = "Normal Weight";
+            } else if (c >= 25 && c < 29.9) {
+                document.getElementById("category").textContent = "Overweight";
+            } else {
+                document.getElementById("category").textContent = "Obese";
+            }
+
+        }
+    </script>
+</body>
+</html>
